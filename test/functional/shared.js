@@ -181,10 +181,10 @@ function invalidAssets (account, option, badTransactions) {
 	});
 }
 
-function multisigScenario (size, amount) {
+function MultisigScenario (size, amount) {
 	this.account = node.randomAccount();
-	this.members = new Array();
-	this.keysgroup = new Array();
+	this.members = [];
+	this.keysgroup = [];
 
 	var i, auxAccount;
 	for (i = 0; i < size - 1; i++) {
@@ -193,7 +193,6 @@ function multisigScenario (size, amount) {
 		this.keysgroup.push('+' + auxAccount.publicKey);
 	}
 
-	this.transaction = null;
 	this.amount = amount || 100000000000;
 }
 
@@ -202,5 +201,5 @@ module.exports = {
 	confirmationPhase: confirmationPhase,
 	invalidTransactions: invalidTransactions,
 	invalidAssets: invalidAssets,
-	multisigScenario: multisigScenario
+	MultisigScenario: MultisigScenario
 };
