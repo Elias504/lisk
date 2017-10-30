@@ -573,7 +573,7 @@ Account.prototype.get = function (filter, fields, cb) {
  */
 Account.prototype.getAll = function (filter, fields, cb) {
 	var defaultFields = false;
-	if (typeof(fields) === 'function') {
+	if (typeof fields === 'function') {
 		defaultFields = true;
 		cb = fields;
 		fields = this.fields.map(function (field) {
@@ -618,13 +618,11 @@ Account.prototype.getAll = function (filter, fields, cb) {
 	delete filter.sort;
 
 	if (filter.address) {
-
 		if (typeof filter.address === 'string') {
 			filter['a.address'] = {
 				$upper: ['a.address', filter.address]
 			};
 		}
-
 		// If we want to get addresses by id
 		if (Array.isArray('filter.address')) {
 			filter['a.address'] = filter.address;
